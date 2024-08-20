@@ -1,0 +1,25 @@
+version: "3.7"
+services:
+  db:
+    image: postgres:15
+    container_name: db
+    env_file:
+      - .env-non-dev
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    image: app
+    build:
+      context: .
+    container_name: app
+    env_file:
+      - .env-non-dev
+    depends_on:
+      - db
+    command: ["poetry", "run", "/app/docker/app.sh"]
+    ports:
+      - "7777:8000"

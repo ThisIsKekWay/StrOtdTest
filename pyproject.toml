@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "strotd"
+version = "0.1.0"
+description = ""
+authors = ["Koha <BelkoZdorovo@yandex.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = {extras = ["all"], version = "^0.112.1"}
+psycopg2 = "*"
+asyncpg = "^0.29.0"
+alembic = "^1.13.2"
+fastapi-versioning = "^0.10.0"
+sqlalchemy = "^2.0.32"
+pytest = "^8.3.2"
+pytest-asyncio = "^0.23.8"
+gunicorn = "^23.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
